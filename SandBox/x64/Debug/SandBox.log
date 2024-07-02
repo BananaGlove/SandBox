@@ -1,0 +1,12 @@
+﻿  particle_grid.cpp
+C:\Projects\C++\SandBox\particle_grid.cpp(25,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(25,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(35,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(35,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(51,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(51,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(59,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(59,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(69,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Projects\C++\SandBox\particle_grid.cpp(70,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  SandBox.vcxproj -> C:\Projects\C++\SandBox\x64\Debug\SandBox.exe
