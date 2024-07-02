@@ -21,12 +21,12 @@ ParticleGrid game_grid{ WIN_WIDTH, WIN_HEIGHT };
 
 auto brush_shape = std::make_shared<CircleBrush>();
 Brush draw_brush(SAND, 10, brush_shape);
-Brush erase_brush(AIR, 10, brush_shape);
+Brush erase_brush(AIR, 15, brush_shape);
 
 int main() {
-	SetTraceLogLevel(LOG_FATAL);
+	//SetTraceLogLevel(LOG_FATAL);
 	InitWindow(WIN_WIDTH, WIN_HEIGHT, WIN_TITLE.c_str());
-	SetTargetFPS(240);
+	SetTargetFPS(144);
 
 	// Game Loop
 	while (!WindowShouldClose()) {
@@ -53,10 +53,10 @@ void update() {
 	player_state.is_mouseR_down = IsMouseButtonDown(MOUSE_BUTTON_RIGHT);
 
 	// ---------- SPAWN PARTICLE ---------- //
-	if (player_state.is_mouseL_down && game_grid.isInBound(player_state.mouse_pos)) {
+	if (player_state.is_mouseL_down) {
 		game_grid.drawParticles(draw_brush, player_state.mouse_pos);
 	}
-	else if (player_state.is_mouseR_down && game_grid.isInBound(player_state.mouse_pos)) {
+	else if (player_state.is_mouseR_down) {
 		game_grid.drawParticles(erase_brush, player_state.mouse_pos);
 	}
 
@@ -67,12 +67,13 @@ void render() {
 	BeginDrawing();
 	ClearBackground(BLACK);
 
-		// ---------- MOUSE ---------- //
-		DrawCircleLinesV(player_state.mouse_pos, 5, WHITE);
-
 		// ---------- GRID ---------- //
 		Texture2D grid_texture = generateParticleGridTexture(game_grid);
 		DrawTexture(grid_texture, 0, 0, WHITE);
+
+		// ---------- MOUSE ---------- //
+		float cursor_size = player_state.is_mouseR_down ? erase_brush.getSize() : draw_brush.getSize();
+		DrawCircleLinesV(player_state.mouse_pos, cursor_size, WHITE);
 
 	EndDrawing();
 	UnloadTexture(grid_texture);

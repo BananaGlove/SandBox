@@ -68,11 +68,13 @@ void ParticleGrid::drawParticles(const Brush& brush, Vector2 mouse_pos) {
 
 	for (int x = mouse_pos.x - brush_size; x <= mouse_pos.x + brush_size; x++) {
 		for (int y = mouse_pos.y - brush_size; y <= mouse_pos.y + brush_size; y++) {
-			Vector2 particle_pos{ (float)x, (float)y };
-			uint8_t particle_type = getParticleType(particle_pos);
 
+			Vector2 particle_pos{ (float)x, (float)y };
+			if (!isInBound(particle_pos)) continue;
+
+			uint8_t particle_type = getParticleType(particle_pos);
 			if (particle_type != brush_type && (particle_type == AIR || brush_type == AIR) 
-				&& isInBound(particle_pos) && brush_shape.check(mouse_pos, particle_pos, brush_size)) {
+				&& brush_shape.check(mouse_pos, particle_pos, brush_size)) {
 
 				setParticleType(particle_pos, brush_type);
 			}
@@ -87,7 +89,7 @@ const Vector2 offsets[] = { // Ordered by priority
 
 void ParticleGrid::updateAllParticles() {
 	for (int x = 0; x < width; x++) {
-		for (int y = height; y >= 0; y--) {
+		for (int y = height - 1; y >= 0; y--) {
 			uint8_t particle_type = getParticleType(x, y);
 			if (particle_type == AIR) continue;
 

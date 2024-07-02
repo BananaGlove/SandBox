@@ -32,6 +32,8 @@ Texture2D generateParticleGridTexture(const ParticleGrid& grid) {
 			ImageDrawPixel(&img, x, y, particle_color);
 		}
 	}
-
-	return LoadTextureFromImage(img);
+	
+	Texture texture = LoadTextureFromImage(img);
+	UnloadImage(img);
+	return texture;
 }
